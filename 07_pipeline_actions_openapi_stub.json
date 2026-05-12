@@ -1,0 +1,222 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Content pipeline action stub",
+    "version": "1.0.0",
+    "description": "Optional OpenAPI-style schema stub for connecting a custom GPT to a content workflow system such as Notion, Google Drive, Jira, Asana, or a custom CMS. This is a placeholder and requires real endpoints, authentication, and security review before use."
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/content-pipeline",
+      "description": "Replace with the real workflow system endpoint."
+    }
+  ],
+  "paths": {
+    "/intake-records": {
+      "post": {
+        "operationId": "createIntakeRecord",
+        "summary": "Create a structured content intake record.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IntakeRecord"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Intake record created."
+          }
+        }
+      }
+    },
+    "/pipeline-records/{recordId}": {
+      "patch": {
+        "operationId": "updatePipelineRecord",
+        "summary": "Update workflow status, owner, risk level, or review gate.",
+        "parameters": [
+          {
+            "name": "recordId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PipelineUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pipeline record updated."
+          }
+        }
+      }
+    },
+    "/qa-reports": {
+      "post": {
+        "operationId": "createQaReport",
+        "summary": "Attach an editorial QA report to an asset.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QaReport"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "QA report created."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IntakeRecord": {
+        "type": "object",
+        "required": [
+          "request_title",
+          "business_goal",
+          "audience",
+          "asset_type",
+          "risk_level"
+        ],
+        "properties": {
+          "request_title": {
+            "type": "string"
+          },
+          "business_goal": {
+            "type": "string"
+          },
+          "audience": {
+            "type": "string"
+          },
+          "asset_type": {
+            "type": "string"
+          },
+          "reader_problem": {
+            "type": "string"
+          },
+          "technical_truths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claims_requiring_validation": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reviewers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        }
+      },
+      "PipelineUpdate": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "review_gate": {
+            "type": "string"
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "blockers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "next_action": {
+            "type": "string"
+          }
+        }
+      },
+      "QaReport": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "overall_recommendation",
+          "readiness_score",
+          "must_fix"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "overall_recommendation": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "revise",
+              "block"
+            ]
+          },
+          "readiness_score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "unsupported_claims": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "must_fix": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "approval_path": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

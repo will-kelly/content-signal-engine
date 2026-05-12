@@ -1,0 +1,56 @@
+{
+  "package_name": "Will Kelly custom GPT content pipeline",
+  "package_version": "1.0.0",
+  "positioning": "An interview-ready example of a governed AI content pipeline for technical and marketing content.",
+  "use_case": "Show how AI can operationalize content strategy, technical accuracy, marketing alignment, review discipline, and repurposing without reducing content work to generic drafting.",
+  "pipeline_principle": "AI drafts are pre-review artifacts. The system is designed to produce structured work, identify uncertainty, force verification, and preserve narrative consistency across technical and marketing assets.",
+  "pipeline_stages": [
+    {
+      "stage": "intake",
+      "owner_gpt": "Content strategy intake GPT",
+      "purpose": "Translate vague requests into structured briefs tied to audience, business problem, technical truth, proof, constraints, and review path."
+    },
+    {
+      "stage": "routing",
+      "owner_gpt": "Pipeline orchestrator GPT",
+      "purpose": "Select the right workflow, assign asset type, enforce handoff contracts, and prevent skipped review gates."
+    },
+    {
+      "stage": "technical drafting",
+      "owner_gpt": "Technical content builder GPT",
+      "purpose": "Draft explainers, docs, tutorials, solution briefs, and technical enablement artifacts with assumptions and verification flags."
+    },
+    {
+      "stage": "marketing drafting",
+      "owner_gpt": "Marketing content builder GPT",
+      "purpose": "Draft messaging, thought leadership, web copy, campaign content, and sales enablement material grounded in pain points and proof."
+    },
+    {
+      "stage": "quality governance",
+      "owner_gpt": "Editorial QA and governance GPT",
+      "purpose": "Score clarity, claims, technical accuracy, buyer relevance, consistency, and publication readiness."
+    },
+    {
+      "stage": "repurposing",
+      "owner_gpt": "Repurposing and distribution GPT",
+      "purpose": "Turn approved core assets into channel-specific derivatives while preserving claims, caveats, and narrative spine."
+    }
+  ],
+  "interview_angle": [
+    "This is not a prompt library. It is a content operating model encoded as reusable GPT behavior.",
+    "It shows how technical content, marketing content, and enablement can share one source of truth without becoming bland consensus sludge.",
+    "It creates measurable gates: intake completeness, claim risk, SME review status, publication readiness, and reuse potential.",
+    "It demonstrates practical AI enablement: workflows, standards, handoffs, and verification rather than one-off drafting tricks."
+  ],
+  "files": [
+    "00_master_pipeline_manifest.json",
+    "01_pipeline_orchestrator_gpt.json",
+    "02_content_strategy_intake_gpt.json",
+    "03_technical_content_builder_gpt.json",
+    "04_marketing_content_builder_gpt.json",
+    "05_editorial_qa_governance_gpt.json",
+    "06_repurposing_distribution_gpt.json",
+    "07_pipeline_actions_openapi_stub.json",
+    "08_interview_talk_track.json"
+  ]
+}
